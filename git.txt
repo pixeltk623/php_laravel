@@ -1,0 +1,8 @@
+git cmd
+
+1. git status
+2. git pull
+3. git add . => all file
+4. git add "test.php"
+5. git commit -m "Updated"
+6. git push / git push origin master
