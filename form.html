@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form In HTML</title>
+</head>
+<body>
+
+	<h2>Form In HTML</h2>
+<!-- 
+	GET
+	method="" action="" enctype=""
+	POST 
+	by default form method = GET
+	enctype="multipart/form-data"
+	2,048 characters, 
+	readonly
+	disabled
+	required
+	autocomplete="off"
+	multiple size="2"
+-->
+
+	<form method="POST" action="form1.php" enctype="multipart/form-data"> 
+		<label>Name</label>
+		<input type="text" name="first_name" value="Sharvan">
+		<br><br>
+
+		<label>Email</label>
+		<input type="email" name="" required>
+		<br><br>
+
+
+		<label>Password</label>
+		<input type="password" name="">
+		<br><br>
+
+		<label>Gender</label>
+		<input type="radio" name="gender" value="Male" checked>Male
+		<input type="radio" name="gender" value="Female">Female
+
+		<br><br>
+
+		<label>Hobby</label>
+
+		<input type="checkbox" name="Hobby1" value="Cricket">Cricket
+		<input type="checkbox" name="Hobby2" value="Cricket">Cricket
+		<input type="checkbox" name="Hobby4" value="Cricket">Cricket
+		<input type="checkbox" name="Hobby5" value="Cricket">Cricket
+		<br><br>
+
+		<label>City</label>
+		<select> 
+			<option value="">Select</option>
+			<option value="Vadodara">Vadodara</option>
+			<option value="Kolkata">Kolkata</option>
+			<option value="Patna">Patna</option>
+		</select>
+		<br><br>
+
+		<label>Address</label>
+		<textarea></textarea>
+		<br><br>
+
+		<label>DOB</label>
+
+		<input type="date" name="" max="2021-07-01">
+		<br><br>
+
+		<label>Date & TIme</label>
+		<input type="datetime-local" name="">
+		<br><br>
+
+		<label>Time</label>
+		<input type="time" name="">
+		<br><br>
+
+		<label>Week</label>
+		<input type="week" name="">
+		<br><br>
+
+		<label>Month</label>
+		<input type="month" name="">
+		<br><br>
+
+		<label>Search</label>
+		<input type="search" name="">
+		<br><br>
+
+		<label>Range</label>
+		<!-- <input type="range" min="-10" max="10"> -->
+		<input type="range" min="5" max="10" step="1">
+
+
+		<br><br>
+
+		<label>Profile Pic</label>
+		<input type="file" name="file" multiple>
+		<br><br>
+		<input type="submit" name="submit" value="Send">
+
+		<input type="reset" name="">
+		<!-- <button type="button">Send</button> -->
+	</form>
+
+</body>
+</html>
