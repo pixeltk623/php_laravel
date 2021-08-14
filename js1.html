@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<form>
+		<label>First Number</label>
+		<input type="text" name="" id="fnum">
+		<span id="e1"></span>
+		<br><br>
+		<button type="button" onclick="makeCalculator()">Calculate</button>
+	</form>
+
+	<script type="text/javascript">
+		function makeCalculator() {
+			var fnum = parseInt(document.getElementById('fnum').value);
+
+			if (!isNaN(fnum)==true) {
+				document.getElementById('e1').innerHTML = "";
+				
+			} else {
+				document.getElementById('e1').innerHTML = "First Number can not be blank";
+				document.getElementById('e1').style.color = "red";
+			}
+
+			//console.log(isNaN(fnum));
+
+			//console.log(typeof(fnum));
+			// if (fnum=='') {
+			// 	//alert("First Number can not be blank");
+			// 	document.getElementById('e1').innerHTML = "First Number can not be blank";
+			// 	document.getElementById('e1').style.color = "red";
+			// } else {
+			// 	document.getElementById('e1').innerHTML = "";
+			// }
+
+		}
+	</script>
+</body>
+</html>

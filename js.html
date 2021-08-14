@@ -3,23 +3,104 @@
 <head>
 	<title></title>
 	<!-- <script type="text/javascript"></script> -->
-	<script src="js/custom.js"></script>
+	<!-- <script src="js/custom.js"></script> -->
 </head>
 <body>
 
+	<h1 id="h1">This is H1</h1>
+
+	<form method="post">
+		<button type="submit" onclick="return getMyAddress()">Click</button>
+	</form>
+
+	<p id="nameofuser"></p>
+
+	<div id="block"></div>
+
+
+	<!-- <button type="submit">Click</button> -->
+
+	<button type="button" onclick="myFunction()">Show My Name</button>
+
+	<button type="button" onclick="newFunction()">prompt</button>
+
+	<button onclick="showMyInputNumber()">Show My Input Number</button>
+
+	<button onclick="deleteMyName()">Delete</button>
+	
+
 <script type="text/javascript">
 
-	var fNumber = parseInt("6");
-	var sNumber = parseInt("8");
+
+	function deleteMyName() {
+		var confirmBox = confirm("Are You Sure want to delete this item");
+
+		var tag = document.getElementById('h1');
+
+		if(confirmBox==true) {
+			tag.style.display = "none";
+		}
+		
+		console.log(confirmBox);
+	}
+
+	/*var a = parseInt(prompt("Enter Your First Name"));
+
+	console.log(a);*/
+
+	function showMyInputNumber() {
+		document.getElementById('block').innerHTML = "<h1 style='color:red;'>"+(a)+"</h1>";
+	}
+
+	function newFunction() {
+		var firstName = parseInt(prompt("Enter Your First Name"));
+		var lastName = parseInt(prompt("Enter Your Last Name"));
+
+		console.log( typeof(firstName) + typeof(lastName));
+
+		console.log(firstName+lastName);
+
+		document.getElementById('block').innerHTML = "<h1 style='color:red;'>"+(firstName+lastName)+"</h1>";
+	}
+	
+
+	function getMyAddress() {
+		console.log("Patna");
+
+		return false;
+	}
+
+	function myFunction() {
+
+		// var element = document.getElementById('nameofuser');
+
+		// element.innerHTML = "Sharvan Kumar";
+
+		// document.getElementById('nameofuser').innerHTML = "Sharvan Kumar";
+
+		// document.getElementById('nameofuser').style.color = "blue";
+		// document.getElementById('nameofuser').style.fontSize = "50px";
+		// document.getElementById('nameofuser').style.backgroundColor = "red";
+
+		// document.getElementById('block').innerHTML = "<h1 style='color:red;'>S Kumar</h1>";
+		//console.log(element);
+		//alert("Hello This is Kumar");
+		//console.log("Hello This is Kumar");
+	}
 
 
-	console.log(typeof(fNumber));
 
-	var newNumber = parseInt(fNumber);
+	// var fNumber = parseInt("6");
+	// var sNumber = parseInt("8");
 
-	console.log(typeof(newNumber));
 
-	console.log(fNumber+sNumber);
+	// console.log(typeof(fNumber));
+
+	// var newNumber = parseInt(fNumber);
+
+	// console.log(typeof(newNumber));
+
+	// console.log(fNumber+sNumber);
 
 
 	// console.log(typeof(eval(fNumber)));

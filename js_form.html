@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#result {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<label>First Number</label>
+		<input type="text" name="" id="fnum">
+		<span id="e1"></span>
+		<br><br>
+		<label>Second Number</label>
+		<input type="text" name="" id="snum">
+		<span id="e2"></span>
+		<br><br>
+		<label>Operation</label>
+		<select id="operation">
+			<option value="">Select</option>
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+		</select>
+		<span id="e3"></span>
+		<br><br>
+		<button type="button" onclick="makeCalculator()">Calculate</button>
+	</form>
+
+	<div id="result">
+		
+	</div>
+	<script type="text/javascript">
+		function makeCalculator() {
+			var fnum = document.getElementById('fnum').value;
+			var snum = document.getElementById('snum').value;
+			var operation = document.getElementById('operation').value;
+
+			//console.log(fnum+" " + snum + " " + operation);
+
+			if (fnum=='') {
+				//alert("First Number can not be blank");
+				document.getElementById('e1').innerHTML = "First Number can not be blank";
+				document.getElementById('e1').style.color = "red";
+			} else {
+				document.getElementById('e1').innerHTML = "";
+			}
+
+			if (snum=='') {
+				//alert("First Number can not be blank");
+				document.getElementById('e2').innerHTML = "Second Number can not be blank";
+				document.getElementById('e2').style.color = "red";
+			} else {
+				document.getElementById('e2').innerHTML = "";
+			}
+
+			if (operation=='') {
+				//alert("First Number can not be blank");
+				document.getElementById('e3').innerHTML = "Plx select any option";
+				document.getElementById('e3').style.color = "red";
+			} else {
+				document.getElementById('e3').innerHTML = "";
+			}
+
+			var a = parseInt(fnum);
+			var b = parseInt(snum);
+
+
+			// if (a>0 && b>0) {
+			// 		console.log(a+b);
+			// 	} else {
+			// 		console.log("Negative Number");
+			// 	}
+
+			if (operation=='+') {
+				document.getElementById('result').innerHTML = "<h1 style='color:green;'>"+(a+b)+"</h1>";
+			}
+
+			if (operation=='-') {
+				document.getElementById('result').innerHTML = "<h1 style='color:green;'>"+(a-b)+"</h1>";
+			}
+
+			if (operation=='*') {
+				document.getElementById('result').innerHTML = "<h1 style='color:green;'>"+(a*b)+"</h1>";
+			}
+
+
+
+		}
+	</script>
+</body>
+</html>
