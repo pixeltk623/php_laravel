@@ -20,6 +20,10 @@
 	// 7. Python Program to Convert Kilometers to Miles
 	// 8. Python Program to Find the Largest Among Three Numbers
 
+	// 9. Program to check Vowel and consonant
+
+// We will pass a character in switch expression to check whether it is vowel or constant. If the passed character is A, E, I, O, or U, it will be vowel otherwise consonant.
+
 	
 	// $name = "kumar";
 
@@ -28,7 +32,7 @@
 
 	//$name = "";
 		
-	$number = 9;
+	// $number = 9;
 
 	// if ($number>0) {
 	// 	echo $number." Positive Number";
@@ -57,19 +61,19 @@
 	// 	echo "Invalid Number";
 	// }
 
-	$a = 16;
+	// $a = 16;
 
-	$b = 8;
+	// $b = 8;
 
-	$c = 9;
+	// $c = 9;
 
-	if ($a>$b && $a>$c) {
-		echo $a. " A";
-	} elseif ($b>$a && $b>$c) {
-		echo $b. " B";
-	} else {
-		echo $c. "C";
-	}
+	// if ($a>$b && $a>$c) {
+	// 	echo $a. " A";
+	// } elseif ($b>$a && $b>$c) {
+	// 	echo $b. " B";
+	// } else {
+	// 	echo $c. "C";
+	// }
 
 
 	// echo isset($name);
