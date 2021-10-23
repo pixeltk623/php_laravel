@@ -167,7 +167,7 @@
 	// 9. 1 - 1000 palindrome number
 	// 10. factorial of number
 
-	
+
 
 
 ?>
