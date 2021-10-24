@@ -1,11 +1,3 @@
-<?php 
-    
-    include 'call_api.php';
-
-    // echo "<pre>";
-    // print_r($finalData);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,15 +59,11 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
             <?php 
-                for ($i=0; $i <= sizeof($finalData); $i++) { 
-
-
+                for ($i=1; $i <= 3; $i++) { 
             ?>
-
-
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="<?php echo $finalData[$i]->avatar; ?>" class="img-fluid" alt="">
+              <img src="assets/img/trainers/trainer-<?php echo $i; ?>.jpg" class="img-fluid" alt="">
               <div class="member-content">
                 <h4>Walter White</h4>
                 <span>Web Development</span>

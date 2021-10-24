@@ -1,3 +1,6 @@
+<?php
+    include 'api.php';
+?>
 <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -6,35 +9,46 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Mentor</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
+                <h3>Mentor</h3>
+                <p>
+                  A108 Adam Street <br>
+                  New York, NY 535022<br>
+                  United States <br><br>
+                  <strong>Phone:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> info@example.com<br>
             </p>
           </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            <div class="col-lg-2 col-md-6 footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                 <?php 
+                    for ($i=0; $i < sizeof($footerMenu); $i++) { 
+                    if ($i%2==0) {
+                        ?>
+                    <li><i class="bx bx-chevron-left"></i> <a href="#"><?php echo $footerMenu[$i]; ?></a></li>
+                        <?php
+                    } else {
+                        ?>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#"><?php echo $footerMenu[$i]; ?></a></li>
+                <?php
+                    }
+                ?>
+              <?php
+                }
+              ?>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            <?php 
+                for ($i=0; $i < sizeof($our_services); $i++) { 
+                   ?>
+              <li><i class="bx bx-chevron-right"></i> <a href="#"><?php echo $our_services[$i]; ?></a></li>
+                   <?php 
+                }
+            ?>
             </ul>
           </div>
 
