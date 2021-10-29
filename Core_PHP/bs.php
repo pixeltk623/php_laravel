@@ -1,13 +1,13 @@
 <?php 
     if (isset($_POST['submit'])) {
-        
-     $name = $_POST['name'];
+        $name = $_POST['name'];
 
-     if ($name=='') {
-         $newClass = "is-invalid";
-     } else {
-         $newClass = "is-valid";
-     }
+        if ($name=='') {
+            
+            $newClass = "is-invalid";
+        } else {
+            $newClass = "is-valid";
+        }
     }
 ?>
 <!doctype html>
