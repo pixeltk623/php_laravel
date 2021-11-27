@@ -1,0 +1,26 @@
+CRUD
+
+C = > Create (Insert)
+
+R = > Read (List Of Employee)
+
+U => Update (Employee Record Update)
+
+D => Delete (Employee Record Delete)
+
+Employee
+
+First Name => Text
+Last Name => Text
+Email => Email
+Mobile => Text
+Gender=>  => Radio
+Hobby => Checkbox
+City => select
+
+7+1+1+1
+
+CREATE TABLE `crud_kol`.`employee` ( `id` INT NOT NULL AUTO_INCREMENT , `first_name` VARCHAR(255) NOT NULL , `last_name` VARCHAR NOT NULL , `email` VARCHAR NOT NULL , `mobile` VARCHAR NOT NULL , `gender` VARCHAR NOT NULL , `city` VARCHAR NOT NULL , `hobby` VARCHAR NOT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `email`, `mobile`, `gender`, `city`, `hobby`, `created_at`, `updated_at`) VALUES (NULL, 'sharvan', 'kumar', 's@gmail.com', '9835401515', 'Male', 'Vadodara', 'Cricket', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
