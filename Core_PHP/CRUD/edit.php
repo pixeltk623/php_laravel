@@ -1,8 +1,9 @@
 <?php
-    include_once 'config.php';
+	include_once 'config.php';
 
-    if (isset($_POST['submit'])) {
-        $first_name = $_POST['first_name'];
+	date_default_timezone_set("Asia/Kolkata");
+	if (isset($_POST['submit'])) {
+		$first_name = $_POST['first_name'];
 
         if($first_name=='') {
             $message = "Name Can Not be blank";
@@ -29,28 +30,33 @@
 
         $hobby =  implode(",", $hobby);
 
-
-        $queryCheckEmail = "SELECT * FROM employee WHERE email = '$email'";
-
-        $res = mysqli_query($conn, $queryCheckEmail);
-
-        if ($res->num_rows>0) {
-            $emailError = "Email is already exits";
-        } else {
-             if ($first_name!='') {
+        if ($first_name!='') {
             
-                    $query = "INSERT INTO employee (first_name, last_name, email, mobile, gender, city, hobby) VALUES ('$first_name', '$last_name', '$email', '$mobile','$gender', '$city', '$hobby')";
+           $query = "UPDATE `employee` SET `first_name`='$first_name',`last_name`='$last_name',`email`='$email',`mobile`='$mobile',`gender`='$gender',`city`='$city',`hobby`='$hobby',`updated_at`='".date("Y-m-d H:i:s")."' WHERE id = '".$_GET['id']."'";
+          
+            $result =  mysqli_query($conn, $query);
 
-                    $result =  mysqli_query($conn, $query);
-
-                    if ($result==true) {
-                        $successMessage = "New Employee Created";
-                    } else {
-                        $errorMessage = "Somthing Error";
-                    }
-                }
+            if ($result==true) {
+                $successMessage = "Employee Updated";
+            } else {
+                $errorMessage = "Somthing Error";
             }
         }
+	}
+	
+	if (isset($_GET['id']) && is_numeric($_GET['id']) && !empty($_GET['id'])) {
+		
+		$eid = $_GET['id'];
+		$query = "SELECT * FROM employee WHERE id = '$eid'";
+		$result =  mysqli_query($conn, $query);
+
+		if($result->num_rows==0) {
+			header("Location: 404.php");
+		}
+		$response = mysqli_fetch_object($result);
+		$newHobby = explode(",", $response->hobby);
+
+		
 ?>
 <!doctype html>
 <html lang="en">
@@ -94,7 +100,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>First Name</label>
-                            <input type="text" name="first_name" class="form-control <?php echo (isset($className)) ? $className : '' ?>">
+                            <input type="text" name="first_name" value="<?php echo $response->first_name; ?>" class="form-control <?php echo (isset($className)) ? $className : '' ?>">
                             <?php
                                 if (isset($message)) {
                                     ?>
@@ -107,7 +113,7 @@
                     <div class="col-sm-6">
                          <div class="form-group">
                             <label>Last Name</label>
-                            <input type="text" name="last_name" class="form-control">
+                            <input type="text" name="last_name" value="<?php echo $response->last_name; ?>" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -117,7 +123,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" class="form-control">
+                            <input type="email" name="email" value="<?php echo $response->email; ?>" class="form-control">
                             <?php
                                 if (isset($emailError)) {
                                     ?>
@@ -130,7 +136,7 @@
                     <div class="col-sm-6">
                          <div class="form-group">
                             <label>Mobile</label>
-                            <input type="text" name="mobile" class="form-control">
+                            <input type="text" name="mobile" value="<?php echo $response->mobile; ?>" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -141,12 +147,12 @@
                         <div class="form-group">
                             <label>Gender</label>
                             <div class="custom-control custom-radio">
-                              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="Male">
+                              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="Male" <?php echo ($response->gender=='Male') ? 'checked' : '' ?>>
                               <label class="custom-control-label" for="customRadio1">Male</label>
                             </div>
                             <div class="custom-control custom-radio">
-                              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" value="Female">
-                              <label class="custom-control-label" for="customRadio2">Female</label>
+                              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" value="Female" <?php echo ($response->gender=='Female') ? 'checked' : '' ?>>
+                              <label class="custom-control-label" for="customRadio2" >Female</label>
                             </div>
                         </div>
                     </div>
@@ -155,17 +161,23 @@
                             <label>Hobby</label>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" name="hobby[]" value="Cricket">Cricket
+                                <input type="checkbox" class="form-check-input" name="hobby[]" value="Cricket" <?php if (in_array('Cricket', $newHobby)) {
+                                	echo "checked";
+                                } ?>>Cricket
                               </label>
                             </div>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" name="hobby[]" value="Football">Football
+                                <input type="checkbox" class="form-check-input" name="hobby[]" value="Football" <?php if (in_array('Football', $newHobby)) {
+                                	echo "checked";
+                                } ?>>Football
                               </label>
                             </div>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" name="hobby[]" value="Tenis">Tenis
+                                <input type="checkbox" class="form-check-input" name="hobby[]" value="Tenis" <?php if (in_array('Tenis', $newHobby)) {
+                                	echo "checked";
+                                } ?>>Tenis
                               </label>
                             </div>
                         </div>
@@ -176,13 +188,13 @@
                 <label>City</label>
                 <select name="city" class="form-control">
                     <option value="">Select</option>
-                    <option value="Vadodara">Vadodara</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Patna">Patna</option>
+                    <option value="Vadodara" <?php echo ($response->city=='Vadodara' ? 'selected': '') ?>>Vadodara</option>
+                    <option value="Kolkata" <?php echo ($response->city=='Kolkata' ? 'selected': '') ?>>Kolkata</option>
+                    <option value="Patna" <?php echo ($response->city=='Patna' ? 'selected': '') ?>>Patna</option>
                 </select>
             </div>
             <div>
-                <input type="submit" name="submit" class="btn btn-primary">
+                <input type="submit" name="submit" value="Update" class="btn btn-primary">
             </div>
         </form>
         
@@ -192,3 +204,12 @@
 
   </body>
 </html>
+		<?php
+		
+	} else {
+
+		header("Location: 404.php");
+
+	}
+
+?>

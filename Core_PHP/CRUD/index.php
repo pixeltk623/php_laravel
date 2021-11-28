@@ -53,9 +53,9 @@
                                     <td><?php echo $response->email; ?></td>
                                     <td><?php echo $response->mobile; ?></td>
                                     <td>
-                                        <a href="" class="btn btn-info">Show</a>
-                                        <a href="" class="btn btn-warning">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
+                                        <a href="show.php?id=<?php echo $response->id; ?>" class="btn btn-info">Show</a>
+                                        <a href="edit.php?id=<?php echo $response->id; ?>" class="btn btn-warning">Edit</a>
+                                        <a href="delete.php?id=<?php echo $response->id; ?>" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             <?php
