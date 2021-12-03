@@ -14,6 +14,7 @@
         $email = $_POST['email'];
         $mobile = $_POST['mobile'];
         $city = $_POST['city'];
+        $status = $_POST['status'];
 
         if (isset($_POST['customRadio'])) {
             $gender = $_POST['customRadio'];
@@ -32,7 +33,7 @@
 
         if ($first_name!='') {
             
-           $query = "UPDATE `employee` SET `first_name`='$first_name',`last_name`='$last_name',`email`='$email',`mobile`='$mobile',`gender`='$gender',`city`='$city',`hobby`='$hobby',`updated_at`='".date("Y-m-d H:i:s")."' WHERE id = '".$_GET['id']."'";
+           $query = "UPDATE `employee` SET `first_name`='$first_name',`last_name`='$last_name',`email`='$email',`mobile`='$mobile', `is_active` = '$status', `gender`='$gender',`city`='$city',`hobby`='$hobby',`updated_at`='".date("Y-m-d H:i:s")."' WHERE id = '".$_GET['id']."'";
           
             $result =  mysqli_query($conn, $query);
 
@@ -184,15 +185,28 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label>City</label>
-                <select name="city" class="form-control">
-                    <option value="">Select</option>
-                    <option value="Vadodara" <?php echo ($response->city=='Vadodara' ? 'selected': '') ?>>Vadodara</option>
-                    <option value="Kolkata" <?php echo ($response->city=='Kolkata' ? 'selected': '') ?>>Kolkata</option>
-                    <option value="Patna" <?php echo ($response->city=='Patna' ? 'selected': '') ?>>Patna</option>
-                </select>
+            <div class="row">
+            <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>City</label>
+                        <select name="city" class="form-control">
+                            <option value="">Select</option>
+                            <option value="Vadodara">Vadodara</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Patna">Patna</option>
+                        </select>
+                    </div>
             </div>
+                        <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>Status</label>
+                        <select name="status" class="form-control">
+                            <option value="1" <?php echo ($response->is_active==1 ? 'selected' : '') ?>>Active</option>
+                            <option value="0" <?php echo ($response->is_active==0 ? 'selected' : '') ?>>Terminated</option>
+                        </select>
+                    </div>
+            </div>
+        </div>
             <div>
                 <input type="submit" name="submit" value="Update" class="btn btn-primary">
             </div>

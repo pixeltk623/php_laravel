@@ -24,3 +24,38 @@ CREATE TABLE `crud_kol`.`employee` ( `id` INT NOT NULL AUTO_INCREMENT , `first_n
 
 
 INSERT INTO `employee` (`id`, `first_name`, `last_name`, `email`, `mobile`, `gender`, `city`, `hobby`, `created_at`, `updated_at`) VALUES (NULL, 'sharvan', 'kumar', 's@gmail.com', '9835401515', 'Male', 'Vadodara', 'Cricket', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+UMS => user management system
+
+User
+	
+	1. Register
+		Nme. email, usrname, pass. cnfpas, gender, hobby ,city etc
+	2. Login
+		username or email and password
+
+		login Done
+			Dashboard Page	
+				All Details
+
+				Logout
+
+
+
+Admin
+
+	Login
+
+	Login Done 
+
+	Dashboard Page
+
+		> All users full details  
+		> Password 
+
+		Manage => change 
+
+
+		logout
+
+		

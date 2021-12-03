@@ -1,8 +1,14 @@
-<?php
-  
-  include_once 'config.php';
-?>
-<!doctype html>
+<?php 
+	session_start();
+	include_once '../config.php';
+	// echo "<pre>";
+
+	// print_r($_SESSION);
+
+	if(isset($_SESSION['is_admin'])) {
+	?>
+
+	<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -16,6 +22,7 @@
   </head>
   <body>
     <div class="container">
+    	<a href="logout.php">LogOut</a>
         <h1 class="text-center text-primary mt-3">Crud In Core PHP</h1>
         <a href="create.php" class="btn btn-primary">Add New Employee</a>
         <br>
@@ -27,7 +34,6 @@
                     <th scope="col">Full Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Mobile</th>
-                    <th>Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -54,18 +60,6 @@
                                     <td><?php echo $response->email; ?></td>
                                     <td><?php echo $response->mobile; ?></td>
                                     <td>
-                                        <?php 
-
-                                            if ($response->is_active==1) {
-                                                echo "<span style='color:green;'>Active</span>";
-                                            } else {
-                                                echo "<span style='color:red;'>Terminated</span>";
-                                            }
-                                            
-
-                                        ?>
-                                    </td>
-                                    <td>
                                         <a href="show.php?id=<?php echo $response->id; ?>" class="btn btn-info">Show</a>
                                         <a href="edit.php?id=<?php echo $response->id; ?>" class="btn btn-warning">Edit</a>
                                         <a href="delete.php?id=<?php echo $response->id; ?>" class="btn btn-danger">Delete</a>
@@ -85,3 +79,10 @@
 
   </body>
 </html>
+	<?php
+
+	} else {
+		header("Location: index.php");
+	}
+
+?>

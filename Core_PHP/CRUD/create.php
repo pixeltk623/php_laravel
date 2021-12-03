@@ -13,6 +13,7 @@
         $email = $_POST['email'];
         $mobile = $_POST['mobile'];
         $city = $_POST['city'];
+        $status = $_POST['status'];
 
         if (isset($_POST['customRadio'])) {
             $gender = $_POST['customRadio'];
@@ -39,7 +40,7 @@
         } else {
              if ($first_name!='') {
             
-                    $query = "INSERT INTO employee (first_name, last_name, email, mobile, gender, city, hobby) VALUES ('$first_name', '$last_name', '$email', '$mobile','$gender', '$city', '$hobby')";
+                    $query = "INSERT INTO employee (first_name, last_name, email, mobile, gender, city, hobby, is_active) VALUES ('$first_name', '$last_name', '$email', '$mobile','$gender', '$city', '$hobby','$status')";
 
                     $result =  mysqli_query($conn, $query);
 
@@ -172,15 +173,28 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label>City</label>
-                <select name="city" class="form-control">
-                    <option value="">Select</option>
-                    <option value="Vadodara">Vadodara</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Patna">Patna</option>
-                </select>
+            <div class="row">
+            <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>City</label>
+                        <select name="city" class="form-control">
+                            <option value="">Select</option>
+                            <option value="Vadodara">Vadodara</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Patna">Patna</option>
+                        </select>
+                    </div>
             </div>
+                        <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>Status</label>
+                        <select name="status" class="form-control">
+                            <option value="1">Active</option>
+                            <option value="0">Terminated</option>
+                        </select>
+                    </div>
+            </div>
+        </div>
             <div>
                 <input type="submit" name="submit" class="btn btn-primary">
             </div>
