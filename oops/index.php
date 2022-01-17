@@ -1,132 +1,245 @@
 <?php 
 	
-// class Employee {
-// 	// Access Modefier
-// 	// Public 
-// 	// privte
-// 	// protected
+	// class Employee { //Class
 
-// 	private $name = "Kumar"; 
+	// 	public $name = "Sharvan"; // Member Properties
 
-// 	protected $salary = 546546; 
+	// 	private $salary = 546;
 
-// 	private function getName() {
-// 		echo $this->name;
-// 	}
+	// 	private $dept = "CS";
 
 
-// 	public function getAllDetails() {
-// 		$this->getName();
-// 	}
+	// 	private function calculateSalary() {
+
+	// 		return $this->salary*15;
+
+	// 	}
+
+	// 	public function getEmployeeName() { // Member Function
+
+	// 		echo "This is Kumar";
+	// 	}
+
+	// 	public function getEmployeeSalary() {
+
+	// 		return $this->calculateSalary();
+
+	// 	}
+
+	// 	public function getDeptName() {
+	// 		return $this->dept;
+	// 	}
+	// }
 
 
-// 	public function getSalary() {
-// 		echo $this->salary;
-// 	}
-// }	
+	// $object = new Employee; // Object
+
+
+	// echo $object->getEmployeeSalary();
+
+	// // echo "<pre>";
+	// // print_r($object);
+
+	// // echo $object->name = "Amit";
+
+	// // echo "<br>";
+
+	// // $object->getEmployeeName();
+
+	// // echo "<br>";
+
+	// // echo $object->getEmployeeSalary();
+
+	// // echo "<br>";
+
+	// // echo $object->getDeptName();
+
+	// // echo "<br>";
+
+	// // echo $object->salary;
+
+	// // echo "<br>";
+
+	// // echo $object->dept;
+
+
+	//Setter and getter
+
+	// class Student {
+
+	// 	public $name;
+	// 	public $rollNo;
+	// 	public $email;
+
+	// 	public function setStudentName($inputName='') {
+	// 		$this->name = $inputName;
+	// 	}
+
+	// 	public function getStudentName() {
+	// 		return $this->name;
+	// 	}
+
+	// 	public function setStudentRoll($inputRoll='') {
+	// 		$this->rollNo = $inputRoll;
+	// 	}
+
+	// 	public function getStudentRoll() {
+	// 		return $this->rollNo;
+	// 	}
+
+	// 	public function setStudentEmail($inputEmail='') {
+	// 		$this->email = $inputEmail;
+	// 	}
+
+	// 	public function getStudentEmail() {
+	// 		return $this->email;
+	// 	}
+	// }
+
+	// $studentObject1 = new Student;
+	// $studentObject2 = new Student;
+	// $studentObject3 = new Student;
+	// $studentObject4 = new Student;
+
+	// $studentObject1->setStudentName('Rahul');
+	// $studentObject1->setStudentRoll(5454);
+	// $studentObject1->setStudentEmail('r@gmail.com');
+
+
+	// $studentObject2->setStudentName('Ravi');
+	// $studentObject2->setStudentRoll(5454);
+	// $studentObject2->setStudentEmail('r@gmail.com');
+
+	// echo $studentObject2->getStudentName();
+	// echo $studentObject2->getStudentRoll();
+	// echo $studentObject2->getStudentEmail();
+
+	// echo "------------------";
+
+	// echo $studentObject1->getStudentName();
+	// echo $studentObject1->getStudentRoll();
+	// echo $studentObject1->getStudentEmail();
+
+
+	
+	// class Employee {
+
+	// 	public $name;
+	// 	public $email;
+	// 	public $mobile;
+
+	// 	public function __construct($nameE, $emailE, $mobileE) {
+	// 		$this->name = $nameE;
+	// 		$this->email = $emailE;
+	// 		$this->mobile = $mobileE;
+	// 	}
+
+
+	// 	public function getName() {
+	// 		return $this->name;
+	// 	}
+
+	// 	public function getEmail() {
+	// 		return $this->email;
+	// 	}
+
+	// 	public function getMobile() {
+	// 		return $this->mobile;
+	// 	}
+
+	// 	public function __destruct() {
+
+	// 		unset($this->name);
+	// 		unset($this->email);
+	// 		unset($this->mobile);
+	// 	}
+	// }
+	
+
+	// $obE = new Employee("Sharvan","s@gmail.com","9835401515");
+
+	// echo $obE->getName();
+
+	// echo $obE->getEmail();
+
+	// echo $obE->getMobile();
 
 
 
-// $objectNew = new Employee();
+	Class Model {
 
-// echo "<pre>";
+		private $serverName = "localhost";
+		private $userName = "root";
+		private $password = "";
+		private $databaseName = "cepms";
+		public $conn;
+		public $query;
+		public $result;
+		public $response;
 
-// print_r($objectNew);
+		public function __construct() {
+			$this->dbConnection();
+		}
 
-// echo $objectNew->getAllDetails();
+		public function dbConnection() {
 
-// $objectNew->getSalary();	
+			$this->conn = mysqli_connect($this->serverName, $this->userName, $this->password, $this->databaseName);
+
+			if($this->conn) {
+
+				return $this->conn;
+			}
+
+		}
+
+		public function getDataFromAnyTable($table) {
+
+			$this->query = "SELECT * FROM  $table";
+
+			$this->result = mysqli_query($this->conn, $this->query);
+
+			while($this->response[] = mysqli_fetch_assoc($this->result)) {
+			}
+
+			return array_filter($this->response);
+		}
+
+		public function insertData($table, $data) {
 
 
-// class Employee {
+			$colName = "`".implode('`,`', array_keys($data))."`";
 
-// 	public $name;
-// 	private $salary;
-// 	private $bonus;
+			$values = "'".implode("','", array_values($data))."'";
 
-// 	public function setBonus($bo) {
-// 		$this->bonus = $bo;
-// 	}
+			$this->query = "INSERT INTO $table ($colName) VALUES ($values)";
+			$this->result = mysqli_query($this->conn, $this->query);
 
-// 	public function getBonus() {
-// 		return $this->bonus;
-// 	}
+			return $this->result;
+
+		}
 
 
-// 	public function setName($name) {
-// 		$this->name = $name;
-// 	}
+		public function delete($table, $id) {
+			$this->query = "DELETE FROM $table WHERE id = ".$id;
 
-// 	public function getName() {
-// 		return $this->name;
-// 	}
+			$this->result = mysqli_query($this->conn, $this->query);
 
-// 	public function setSalary($salary) {
-// 		$this->salary = $salary;
-// 	}
-
-// 	public function getSalary() {
-// 		return $this->salary;
-// 	}
-// }
-
-// $ob = new Employee();
-
-// $ob->setBonus(54545);
-// $ob->setName("Sharvan Kumar");
-// $ob->setSalary(2100);
-
-// echo "<pre>";
-
-// print_r($ob->getName());
-// print_r($ob->getBonus());
-// print_r($ob->getSalary());
-
-class Employee {
-	public $name;
-	private $salary;
-	private $bonus;
-	private $serverName = "localhost";
-	private $userName = "root";
-	private $password = "";
-	private $dbName = "crud_kol";
-	public $conn;
-
-	public function __construct($name,$salary, $bonus) {
-		$this->name = $name;
-		$this->salary = $salary;
-		$this->bonus = $bonus;
-
-		$this->dbConnection();
+			return $this->result;
+		}
 	}
 
-	public function dbConnection() {
-		$this->conn = mysqli_connect($this->serverName, $this->userName, $this->password, $this->dbName);
 
-		return $this->conn;
-	}
+	$obj = new Model;
+	//$allData = $obj->getDataFromAnyTable('categories');
 
-	public function getSalary()  {
+	// $data = array('name' => 'New Cat');
 
-		return $this->salary;
-	}
+	// $obj->insertData('categories', $data);
 
-	public function __destruct() {
-		unset($this->name);
-		unset($this->salary);
-		unset($this->bonus);
-	}
+	$obj->delete('categories','5');
 
-}
+	// echo "<pre>";
 
-
-
-$obj = new Employee("Kumar",2500, 500);
-
-echo "<pre>";
-
-print_r($obj);
-
-
+	// print_r($allData);
 
 ?>
