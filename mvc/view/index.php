@@ -1,3 +1,10 @@
+<?php 
+	
+	// echo "<pre>";
+
+	// print_r($_SESSION);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +20,24 @@
 	
 	<div class="container mt-3">
 		<h1 class="text-center text-primary">Crud In MVC</h1>
-		<table id="table_id" class="display">
+		<a href="<?php echo BASE_URL; ?>addCategory" class="btn btn-info mb-3">Add New Category</a>
+		<?php 
+			if (isset($_SESSION['dataResult'])) {	
+				?>
+				<div class="alert <?php echo $_SESSION['dataResult']['className']; ?>">
+					<?php echo $_SESSION['dataResult']['message']; ?>
+				</div>
+				<?php
+			}
+
+			unset($_SESSION['dataResult']);
+		?>
+		<table id="table_id" class="table  table-bordered display">
 		    <thead>
 		        <tr>
 		        	<th>Sr.No</th>
 		            <th>Name</th>
+		            <th>Slug</th>
 		            <th>Created At</th>
 		            <th>Update At</th>
 		            <th>Action</th>
@@ -25,17 +45,19 @@
 		    </thead>
 		    <tbody>
 		        <?php
+
 		        	foreach ($categories as $key => $value) {
 		        		?>
 		        		<tr>
 		        			<td><?php echo ++$key; ?></td>
 		        			<td><?php echo $value->name; ?></td>
+		        			<td><?php echo (($value->slug!='') ? $value->slug : '<span style="color:red;">NA<span>'); ?></td>
 		        			<td><?php echo $value->created_at; ?></td>
 		        			<td><?php echo $value->updated_at; ?></td>
 		        			<td>
-		        				<button type="button" class="btn btn-primary">Show</button>
-		        				<button type="button" class="btn btn-info">Edit</button>
-		        				<button type="button" class="btn btn-danger">Delete</button>
+		        				<a href="show?id=<?php echo $value->id; ?>" class="btn btn-primary">Show</a>
+		        				<a href="edit?id=<?php echo $value->id; ?>" class="btn btn-info">Edit</a>
+		        				<a href="delete?id=<?php echo $value->id; ?>" class="btn btn-danger">Delete</a>
 		        			</td>
 		        		</tr>
 		        		<?php
@@ -51,3 +73,4 @@
 	</script>
 </body>
 </html>
+
